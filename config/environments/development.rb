@@ -55,4 +55,6 @@ Rails.application.configure do
   
   config.action_mailer.default_url_options = { host: 'rails-jyan88.c9users.io:8080/' }
   config.action_mailer.delivery_method = :letter_opener_web
+  
+  config.reload_classes_only_on_change = false
 end
