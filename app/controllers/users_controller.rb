@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :correct_user, only: [:edit, :show]
+  before_action :correct_user, only: [:edit, :new, :create, :show]
   
   def new
     @user = User.new
