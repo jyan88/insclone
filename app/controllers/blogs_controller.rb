@@ -1,7 +1,8 @@
 class BlogsController < ApplicationController
+  before_action :correct_user, only: [:edit, :update, :show]
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
-  before_action :logged_in_user, only: [:new, :show, :edit, :destroy, :index, :update]
- 
+  
+  
   def index
     @blogs = Blog.all
     #binding.pry
@@ -55,6 +56,14 @@ class BlogsController < ApplicationController
     @blog = Blog.new(blog_params)
     @blog.user_id = current_user.id #現在ログインしているuserのidを、blogのuser_idカラムに挿入する
     render :new if @blog.invalid?
+  end
+  
+  def ensure_correct_user
+    @post = Post.find_by(id:params[:id])
+    if @post.user_id != @current_user.id
+      flash[:notice] = "権限がありません"
+      redirect_to blog_path
+    end
   end
   
   private

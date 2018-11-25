@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :correct_user, only: [:edit, :update, :show, :new]
+  before_action :correct_user, only: [:edit, :show]
   
   def new
     @user = User.new
@@ -32,4 +32,5 @@ class UsersController < ApplicationController
       redirect_to blog_path
     end
   end
+  
 end
