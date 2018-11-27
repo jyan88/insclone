@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :feeds
   resources :contacts
   root to: 'blogs#new'
   resources :blogs do
@@ -8,6 +9,7 @@ Rails.application.routes.draw do
   end
   
 Rails.application.routes.draw do
+  resources :feeds
   resources :contacts
   resources :sessions, only: [:new, :create, :destroy]
   resources :users
