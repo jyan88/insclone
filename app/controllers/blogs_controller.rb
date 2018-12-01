@@ -1,6 +1,6 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
-  before_action :logged_in_user, only: [:new, :show, :edit, :destroy, :index, :update]
+  before_action :logged_in_user, only: [:new, :edit, :destroy, :index, :update]
   before_action :ensure_correct_user, only: [:update, :destroy, :edit]
   
   
@@ -62,7 +62,7 @@ class BlogsController < ApplicationController
   private
   
   def blog_params
-    params.require(:blog).permit(:title, :content)
+    params.require(:blog).permit(:title, :content, :image, :image_cache)
   end
   
   def set_blog

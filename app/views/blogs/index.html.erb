@@ -10,8 +10,10 @@
 <p><%= notice %></p>
 
 <div class ="row">
-  <% @blogs.each do |blog| %>
+  <% @blogs.each do |blog| %><br>
+    <span><h2><%= blog.user.name %>さん<%= image_tag(blog.user.image , size: 30)  %></h2></span>
     <div class="col-xs-12 col-md-6"><%= blog.user.name %>さんのツイート：　　<%= blog.content %></div>
+      <div class="field"><%= image_tag(blog.image , size: 50) %></div>
       <% if @current_user.id == blog.user_id %>
         <div class="col-md-2"><%= link_to "お気に入り", blog_path(blog.id) %></div>
         <div class="col-md-1"><%= link_to "編集する", edit_blog_path(blog.id),data:{ confirm: '本当に編集していいですか？' } %></div>

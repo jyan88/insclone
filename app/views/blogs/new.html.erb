@@ -15,5 +15,14 @@
     <%= form.label :content %>
     <%= form.text_field :content %>
   </div>
-  <%= form.submit "ツイートする",class:"btn-primary" %>
+
+  <span class="btn btn-secondary">
+    <div class="">
+      <%= form.label:画像投稿 %>
+      <%= form.file_field :image%>
+      <%= form.hidden_field :image_cache %>
+    </div>
+  </span>
+
+<%= form.submit "ツイートする",class:"btn-primary" %>
 <% end %>

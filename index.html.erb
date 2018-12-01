@@ -1,0 +1,38 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#gnavi">
+        <span class="sr-only">Bootstrap</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/blogs">TwitterクローンHOME</a>
+    </div>
+    <div id="gnavi" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+        <li><a href="/blogs">ツイート一覧</a></li>  
+        <li><a href="/blogs/new">ツイートする</a></li>
+        </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="top_image"></div><br>
+
+<div class="well well-lg">このサイトはあなたが日々思った何気ない一言を書き綴る場です</div>
+<br>
+
+<h1>ツイート一覧</h1><br>
+
+<%= link_to 'ツイートする', new_blog_path,class:"btn-info btn-lg" %><br><br>
+
+<p><%= notice %></p>
+
+  <div class="row">
+      <% @blogs.each do |blog| %>
+          <div class="col-md-8"><%= blog.content %></div>
+          <div class="col-md-2"><%= link_to "編集",edit_blog_path(blog.id),data:{ confirm: '本当に編集していいですか？' } %></div>
+          <div class="col-md-2"><%= link_to '削除', blog_path(blog.id), method: :delete,data: { confirm: '本当に削除していいですか？' } %></div>
+       <% end %>
+  </div>

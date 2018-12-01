@@ -1,5 +1,9 @@
 <h1>ツイート詳細画面</h1>
 <p>ツイート内容: <%= @blog.content %></p>
+<p>
+  <strong>Image:</strong>
+  <%= image_tag @blog.image%>
+</p>
 
 <% unless @blog.user_id == current_user.id %>
   <% if @favorite.present? %>

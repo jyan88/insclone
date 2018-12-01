@@ -6,4 +6,5 @@
 <h3><%=@user.name%>さんのお気に入り一覧</h3>
   <% @favorites_blogs.each do |favorites_blogs| %>
     <p><%=favorites_blogs.content%></p>
+    <p><%=image_tag favorites_blogs.image%></p>
   <%end%>
