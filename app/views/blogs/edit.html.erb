@@ -10,7 +10,8 @@
       </ul>
     </div>
   <% end %>
-
+  
+<p><%= image_tag(@blog.image.url) %></p>
   <div class="blog_title">
     <%= form.label :content %>
     <%= form.text_field :content %>

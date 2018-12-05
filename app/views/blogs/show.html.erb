@@ -2,7 +2,7 @@
 <p>ツイート内容: <%= @blog.content %></p>
 <p>
   <strong>Image:</strong>
-  <%= image_tag @blog.image%>
+  <%= image_tag(@blog.image.url) if @blog.image.url %>
 </p>
 
 <% unless @blog.user_id == current_user.id %>
