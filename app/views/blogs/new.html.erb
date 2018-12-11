@@ -13,16 +13,16 @@
   
   <div class="blog_content">
     <%= form.label :content %>
-    <%= form.text_field :content %>
+    <%= form.text_field :content, :size=>"100" %>
   </div>
 
   <span class="btn btn-secondary">
-    <div class="">
+    <div class="file_field">
       <%= form.label:画像投稿 %>
       <%= form.file_field :image%>
       <%= form.hidden_field :image_cache %>
     </div>
   </span>
 
-<%= form.submit "ツイートする",class:"btn-primary" %>
+<%= form.submit "投稿する",class:"btn-primary" %>
 <% end %>

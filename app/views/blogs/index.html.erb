@@ -1,27 +1,18 @@
-<div class="top_image"></div><br>
-
-<div class="well well-lg">このサイトはあなたが日々思った何気ない一言を書き綴る場です</div>
 <br>
+<%= link_to '投稿する', new_blog_path,class:"btn-info btn-lg" %><br><br>
 
-<%= link_to 'ツイートする', new_blog_path,class:"btn-info btn-lg" %><br><br>
+<h1>投稿一覧</h1><br>
 
-<h1>ツイート一覧</h1><br>
-
-<p><%= notice %></p>
-
-<div class ="row">
   <% @blogs.each do |blog| %><br>
-    <span><h2><%= blog.user.name %>さん<%= image_tag(blog.user.image , size: 30)  %></h2></span>
-    <div class="col-xs-12 col-md-6"><%= blog.user.name %>さんのツイート：<%= blog.content %></div>
+    <span><h2><%= blog.user.name %>さん<%= image_tag(blog.user.image , size: 50)  %></h2></span>
+    <div class="col-xs-12 col-md-6 box17"><%= blog.user.name %>さんの投稿:<%= blog.content %></div>
       <% if blog.image.present? %>
-        <div class="field"><%= image_tag(blog.image.url , size: 50) %></div>
+        <div class="file"><%= image_tag(blog.image.url , size: 200) %></div>
       <% end %>
         <% if @current_user.id == blog.user_id %>
-          <div class="col-md-2"><%= link_to "お気に入り", blog_path(blog.id) %></div>
-          <div class="col-md-1"><%= link_to "編集する", edit_blog_path(blog.id),data:{ confirm: '本当に編集していいですか？' } %></div>
-          <div class="col-md-1"><%= link_to "削除する", blog_path(blog.id), method: :delete,data: { confirm: '本当に削除していいですか？' } %></div>
+          <div class="col-md-2"><%= link_to "編集する", edit_blog_path(blog.id),data:{ confirm: '本当に編集していいですか？' } %></div>
+          <div class="col-md-2"><%= link_to "削除する", blog_path(blog.id), method: :delete,data: { confirm: '本当に削除していいですか？' } %></div>
         <%else%>
           <div class="col-md-2"><%= link_to "お気に入り", blog_path(blog.id) %></div>
         <% end %> 
-    <% end %>  
-</div>
+    <% end %> 
