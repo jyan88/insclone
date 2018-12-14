@@ -16,10 +16,15 @@ ActiveRecord::Schema.define(version: 20181130085721) do
   enable_extension "plpgsql"
 
   create_table "blogs", force: :cascade do |t|
+    t.string "title"
     t.text "content"
     t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "{:foreign_key=>true}_id"
     t.text "image"
     t.index ["user_id"], name: "index_blogs_on_user_id"
+    t.index ["{:foreign_key=>true}_id"], name: "index_blogs_on_{:foreign_key=>true}_id"
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -37,15 +42,9 @@ ActiveRecord::Schema.define(version: 20181130085721) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "feeds", force: :cascade do |t|
-    t.text "image"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "name"
-    t.string "email"
+    t.text "email"
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
