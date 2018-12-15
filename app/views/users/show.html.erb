@@ -1,5 +1,6 @@
 <div class="media-middle"><%= image_tag(@user.image, size: 200) %>
   <%= @user.name %>さんのページ</div>
+  <div class=""><%= link_to "変更する", edit_user_path(@user.id) %></div>
 
   <h2><%=@user.name%>さんのお気に入り一覧</h2>
     <% @favorites_blogs.each do |favorites_blogs| %>
