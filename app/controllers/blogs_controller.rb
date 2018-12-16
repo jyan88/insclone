@@ -34,14 +34,14 @@ class BlogsController < ApplicationController
   def create
     @blog = Blog.new(blog_params)
     @blog.user_id = current_user.id #現在ログインしているuserのidを、blogのuser_idカラムに挿入する
-    if @blog.save
+      if @blog.save
       # 一覧画面へ遷移して"投稿しました！"とメッセージを表示します。
-      redirect_to blogs_path, notice: "投稿しました！メールをご確認ください"
-      BlogMailer.blog_mail(@blog).deliver
-    else
+        redirect_to blogs_path, notice: "投稿しました！"
+      #BlogMailer.blog_mail(@blog).deliver
+      else
       # 入力フォームを再描画します。
-      render 'new'
-    end
+        render 'new'
+      end
   end
   
   def show
